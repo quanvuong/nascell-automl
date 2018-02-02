@@ -1,0 +1,11 @@
+#SBATCH --job-name=nascell-automl
+#SBATCH --output=output.slurm
+
+#SBATCH --time=00
+#SBATCH --cpus-per-task=5
+#SBATCH --mem=20000mb
+#SBATCH --mail-type=END,FAIL,REQUEUE,STAGE_OUT
+#SBATCH --mail-user=quan.hovuong@gmail.com
+
+Command to run your script goes here.
+I typically activate my conda environment. cd to the directory containing my Python script and run it.
