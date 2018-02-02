@@ -6,6 +6,9 @@
 #SBATCH --mem=20000mb
 #SBATCH --mail-type=END,FAIL,REQUEUE,STAGE_OUT
 #SBATCH --mail-user=quan.hovuong@gmail.com
+#SBATCH --partition=aquila
+#SBATCH --nodelist=aquila2
 
-Command to run your script goes here.
-I typically activate my conda environment. cd to the directory containing my Python script and run it.
+source activate tf_py36
+cd /gpfsnyu/scratch/qhv200/nascell-automl
+python train.py
