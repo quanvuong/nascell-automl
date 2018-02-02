@@ -9,6 +9,8 @@ from reinforce import Reinforce
 
 from tensorflow.examples.tutorials.mnist import input_data
 
+import sys
+
 def parse_args():
     desc = "TensorFlow implementation of 'Neural Architecture Search with Reinforcement Learning'"
     parser = argparse.ArgumentParser(description=desc)
@@ -88,6 +90,7 @@ def train(mnist):
         log.write(log_str)
         log.close()
         print(log_str)
+        sys.stdout.flush()
 
 def main():
     global args

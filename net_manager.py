@@ -1,5 +1,6 @@
 import tensorflow as tf
 from cnn import CNN
+import sys
 
 class NetManager():
     def __init__(self, num_input, num_classes, learning_rate, mnist,
@@ -49,6 +50,9 @@ class NetManager():
                             print("Step " + str(step) +
                                   ", Minibatch Loss= " + "{:.4f}".format(loss) +
                                   ", Current accuracy= " + "{:.3f}".format(acc))
+
+                        sys.stdout.flush()
+
                     batch_x, batch_y = self.mnist.test.next_batch(10000)
                     loss, acc = train_sess.run(
                                 [loss_op, model.accuracy],
@@ -56,7 +60,9 @@ class NetManager():
                                            model.Y: batch_y,
                                            model.dropout_keep_prob: 1.0,
                                            model.cnn_dropout_rates: [1.0]*len(cnn_drop_rate)})
+
                     print("!!!!!!acc:", acc, pre_acc)
+                    sys.stdout.flush()
                     if acc - pre_acc <= 0.01:
                         return acc, acc 
                     else:
